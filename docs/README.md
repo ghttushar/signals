@@ -64,6 +64,7 @@ A lower-level implementation convenience must never silently override a higher-l
 - `USER_EXPERIENCE_MODEL.md` — intelligence-first, human-orchestrated experience model. Defines dual loops (continuous AI watching vs human operating), white-box AI, structured work objects, and attention model.
 - `INFORMATION_OBJECT_MODEL.md` — information/object model. Defines persistent objects, relationships, states, and lifecycles (Business, Observation, Intelligence, Orchestration, Execution, Memory).
 - `INTELLIGENCE_MODEL.md` — intelligence/reasoning model. Defines how the AI observes, anticipates, prioritizes, orchestrates work, and learns (Level 4–5 anticipatory & operational intelligence).
+- `ANARIX_USER_FLOWS_PRODUCT_ARCHITECTURE.md` — customer-survey-derived product blueprint. Defines 5 core jobs, 5 pillars, product architecture, IA (HOME/ACCOUNTS/INSIGHTS/WORK/MEETINGS/REPORTS/CATALOG/CAMPAIGNS/PROMOTIONS), investigation, meeting prep, and phased MVP.
 
 ## Planned follow-up knowledge files
 
