@@ -57,9 +57,10 @@ A lower-level implementation convenience must never silently override a higher-l
 
 - `PRODUCT_THESIS.md` — foundational product thesis, principles, users, experience, intelligence model, and implementation boundaries.
 
-## Additional foundational file
+## Additional foundational files
 
 - `INTEGRATION_FEASIBILITY.md` — realistic API/integration constraints, capability boundaries, mock-data requirements, and prototype feasibility rules.
+- `OPENCODE_PROTOCOLS_AND_RULES.md` — product behavior constitution and OpenCode development rules. Governs AI behavior, human authority, permissions, evidence, memory, failures, UX behavior, prototype simulation, and all development processes.
 
 ## Planned follow-up knowledge files
 
