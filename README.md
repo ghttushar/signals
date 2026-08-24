@@ -23,6 +23,7 @@ All product context lives in `docs/`. Read all files before making any changes.
 | `PRODUCT_THESIS.md` | Foundational thesis, principles, users, experience, intelligence model |
 | `INTEGRATION_FEASIBILITY.md` | API constraints, mock-data rules, prototype feasibility boundaries |
 | `OPENCODE_PROTOCOLS_AND_RULES.md` | Product behavior constitution and OpenCode development rules |
+| `USER_EXPERIENCE_MODEL.md` | Intelligence-first, human-orchestrated experience model |
 | `README.md` | Knowledge pack index and mandatory reading protocol |
 
 ## Status

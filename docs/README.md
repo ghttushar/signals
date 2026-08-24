@@ -61,6 +61,7 @@ A lower-level implementation convenience must never silently override a higher-l
 
 - `INTEGRATION_FEASIBILITY.md` — realistic API/integration constraints, capability boundaries, mock-data requirements, and prototype feasibility rules.
 - `OPENCODE_PROTOCOLS_AND_RULES.md` — product behavior constitution and OpenCode development rules. Governs AI behavior, human authority, permissions, evidence, memory, failures, UX behavior, prototype simulation, and all development processes.
+- `USER_EXPERIENCE_MODEL.md` — intelligence-first, human-orchestrated experience model. Defines dual loops (continuous AI watching vs human operating), white-box AI, structured work objects, and attention model.
 
 ## Planned follow-up knowledge files
 
