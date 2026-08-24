@@ -27,6 +27,8 @@ All product context lives in `docs/`. Read all files before making any changes.
 | `INFORMATION_OBJECT_MODEL.md` | Information/object model — business, observation, intelligence, orchestration, execution, memory |
 | `INTELLIGENCE_MODEL.md` | Intelligence/reasoning model — anticipatory & operational intelligence, orchestration, learning |
 | `ANARIX_USER_FLOWS_PRODUCT_ARCHITECTURE.md` | Customer-survey blueprint — 5 jobs, 5 pillars, IA, flows, intelligence pipeline, MVP phases |
+| `ANARIX_VISUAL_DESIGN.md` | Visual design system — Periwinkle tokens, typography, spacing, layout, Aan brand |
+| `ANARIX_INTERACTION_DESIGN.md` | Interaction design system — principles, panels, tables, AI states, motion, responsive |
 | `README.md` | Knowledge pack index and mandatory reading protocol |
 
 ## Status

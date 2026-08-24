@@ -65,6 +65,8 @@ A lower-level implementation convenience must never silently override a higher-l
 - `INFORMATION_OBJECT_MODEL.md` — information/object model. Defines persistent objects, relationships, states, and lifecycles (Business, Observation, Intelligence, Orchestration, Execution, Memory).
 - `INTELLIGENCE_MODEL.md` — intelligence/reasoning model. Defines how the AI observes, anticipates, prioritizes, orchestrates work, and learns (Level 4–5 anticipatory & operational intelligence).
 - `ANARIX_USER_FLOWS_PRODUCT_ARCHITECTURE.md` — customer-survey-derived product blueprint. Defines 5 core jobs, 5 pillars, product architecture, IA (HOME/ACCOUNTS/INSIGHTS/WORK/MEETINGS/REPORTS/CATALOG/CAMPAIGNS/PROMOTIONS), investigation, meeting prep, and phased MVP.
+- `ANARIX_VISUAL_DESIGN.md` — visual design system. Defines Anarix Periwinkle tokens (light/dark), Aan gradient, typography (Satoshi/Noto Sans/Allura), 4px spacing, component dimensions, layout hierarchy, and production checklist.
+- `ANARIX_INTERACTION_DESIGN.md` — interaction design system. Defines calm/intelligent/fast principles, context preservation, smallest useful surface, progressive disclosure, AI/Aan states, panels/modals/tables/forms, and responsive behavior.
 
 ## Planned follow-up knowledge files
 
