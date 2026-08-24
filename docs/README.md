@@ -62,18 +62,18 @@ A lower-level implementation convenience must never silently override a higher-l
 - `INTEGRATION_FEASIBILITY.md` — realistic API/integration constraints, capability boundaries, mock-data requirements, and prototype feasibility rules.
 - `OPENCODE_PROTOCOLS_AND_RULES.md` — product behavior constitution and OpenCode development rules. Governs AI behavior, human authority, permissions, evidence, memory, failures, UX behavior, prototype simulation, and all development processes.
 - `USER_EXPERIENCE_MODEL.md` — intelligence-first, human-orchestrated experience model. Defines dual loops (continuous AI watching vs human operating), white-box AI, structured work objects, and attention model.
+- `INFORMATION_OBJECT_MODEL.md` — information/object model. Defines persistent objects, relationships, states, and lifecycles (Business, Observation, Intelligence, Orchestration, Execution, Memory).
+- `INTELLIGENCE_MODEL.md` — intelligence/reasoning model. Defines how the AI observes, anticipates, prioritizes, orchestrates work, and learns (Level 4–5 anticipatory & operational intelligence).
 
 ## Planned follow-up knowledge files
 
 1. `ECOMMERCE_UX_BLUEPRINT.md`
-2. `PRODUCT_OBJECT_MODEL.md`
-3. `INTELLIGENCE_MODEL.md`
-4. `INFORMATION_ARCHITECTURE.md`
-5. `CORE_USER_FLOWS.md`
-6. `AI_INTERACTION_PRINCIPLES.md`
-7. `DESIGN_PRINCIPLES.md`
-8. `MVP_SCOPE.md`
-9. `TECHNICAL_ARCHITECTURE.md`
-10. `OPENCODE_BUILD_RULES.md`
+2. `INFORMATION_ARCHITECTURE.md`
+3. `CORE_USER_FLOWS.md`
+4. `AI_INTERACTION_PRINCIPLES.md`
+5. `DESIGN_PRINCIPLES.md`
+6. `MVP_SCOPE.md`
+7. `TECHNICAL_ARCHITECTURE.md`
+8. `OPENCODE_BUILD_RULES.md`
 
 Do not jump directly to polished UI before the product and UX foundations are defined.

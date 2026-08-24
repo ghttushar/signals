@@ -24,6 +24,8 @@ All product context lives in `docs/`. Read all files before making any changes.
 | `INTEGRATION_FEASIBILITY.md` | API constraints, mock-data rules, prototype feasibility boundaries |
 | `OPENCODE_PROTOCOLS_AND_RULES.md` | Product behavior constitution and OpenCode development rules |
 | `USER_EXPERIENCE_MODEL.md` | Intelligence-first, human-orchestrated experience model |
+| `INFORMATION_OBJECT_MODEL.md` | Information/object model — business, observation, intelligence, orchestration, execution, memory |
+| `INTELLIGENCE_MODEL.md` | Intelligence/reasoning model — anticipatory & operational intelligence, orchestration, learning |
 | `README.md` | Knowledge pack index and mandatory reading protocol |
 
 ## Status
