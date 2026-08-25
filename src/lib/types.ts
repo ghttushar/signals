@@ -202,3 +202,87 @@ export interface DocumentItem {
   updatedAt: string;
   source: string;
 }
+
+export interface AdGroup {
+  id: string;
+  campaignId: string;
+  name: string;
+  status: "Enabled" | "Paused";
+  bid: string;
+  spend: string;
+  source: string;
+}
+
+export interface Target {
+  id: string;
+  adGroupId: string;
+  type: "Keyword" | "Product" | "Audience";
+  value: string;
+  bid: string;
+  acos: string;
+}
+
+export interface Budget {
+  campaignId: string;
+  daily: string;
+  utilized: string;
+  status: "Healthy" | "Constrained" | "Underutilized";
+}
+
+export interface DayPart {
+  id: string;
+  campaignId: string;
+  window: string;
+  roas: string;
+  enabled: boolean;
+}
+
+export interface Rule {
+  id: string;
+  scope: string;
+  metric: string;
+  operator: ">" | "<" | "=" | ">=" | "<=";
+  threshold: string;
+  duration: string;
+  action: string;
+  enabled: boolean;
+  lastTriggered: string;
+}
+
+export interface ListingIssue {
+  id: string;
+  productId: string;
+  type: "suppression" | "missing attr" | "image" | "policy" | "eligibility";
+  detail: string;
+  source: string;
+}
+
+export interface ProfitRow {
+  id: string;
+  product: string;
+  revenue: string;
+  cogs: string;
+  fees: string;
+  adCost: string;
+  margin: string;
+  source: string;
+}
+
+export interface PricingRow {
+  id: string;
+  product: string;
+  current: string;
+  history: string;
+  competitor: string;
+  anomaly: string;
+  source: string;
+}
+
+export interface Promotion {
+  id: string;
+  name: string;
+  discount: string;
+  status: "active" | "scheduled" | "draft";
+  performance: string;
+  products: string;
+}

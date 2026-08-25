@@ -1,4 +1,4 @@
-import type { Account, Signal, Integration, Watch, Metric, Campaign, Keyword, SearchTerm, Product, InventoryItem, Person, Team, Conversation, Meeting, Decision, Commitment, DocumentItem } from "./types";
+import type { Account, Signal, Integration, Watch, Metric, Campaign, Keyword, SearchTerm, Product, InventoryItem, Person, Team, Conversation, Meeting, Decision, Commitment, DocumentItem, AdGroup, Target, Budget, DayPart, Rule, ListingIssue, ProfitRow, PricingRow, Promotion } from "./types";
 
 export const mockAccounts: Account[] = [
   { id: "acme", name: "Acme · Hero SKU", marketplace: "Amazon", health: "at risk", revenue: "$124,230" },
@@ -211,4 +211,57 @@ export const mockDocuments: DocumentItem[] = [
   { id: "doc1", name: "Acme SOP — Campaign Setup", type: "SOP", accountId: "acme", updatedAt: "2 days ago", source: "Google Drive" },
   { id: "doc2", name: "PF Harris QBR Deck 2026-05", type: "Report", accountId: "pf", updatedAt: "1 day ago", source: "Drive · Meet" },
   { id: "doc3", name: "Labor Day Brief", type: "Sheet", accountId: "acme", updatedAt: "3 hr ago", source: "Sheets" },
+];
+
+export const mockAdGroups: AdGroup[] = [
+  { id: "ag1", campaignId: "c1", name: "AG — Exact Hero", status: "Enabled", bid: "$1.40", spend: "$210/day", source: "Amazon Ads" },
+  { id: "ag2", campaignId: "c1", name: "AG — Broad Discovery", status: "Enabled", bid: "$0.90", spend: "$80/day", source: "Amazon Ads" },
+  { id: "ag3", campaignId: "c2", name: "AG — Defense", status: "Enabled", bid: "$2.00", spend: "$180/day", source: "Amazon Ads" },
+  { id: "ag4", campaignId: "c2", name: "AG — Competitor", status: "Paused", bid: "$1.10", spend: "$0", source: "Amazon Ads" },
+];
+
+export const mockTargets: Target[] = [
+  { id: "t1", adGroupId: "ag1", type: "Keyword", value: "desk organizer", bid: "$1.40", acos: "22%" },
+  { id: "t2", adGroupId: "ag1", type: "Product", value: "B0CH3HSSLZ", bid: "$0.80", acos: "18%" },
+  { id: "t3", adGroupId: "ag3", type: "Audience", value: "In-market: office", bid: "$1.20", acos: "31%" },
+  { id: "t4", adGroupId: "ag2", type: "Keyword", value: "office storage", bid: "$0.90", acos: "45%" },
+];
+
+export const mockBudgets: Budget[] = [
+  { campaignId: "c1", daily: "$500", utilized: "88%", status: "Constrained" },
+  { campaignId: "c2", daily: "$320", utilized: "62%", status: "Healthy" },
+  { campaignId: "c3", daily: "$120", utilized: "22%", status: "Underutilized" },
+];
+
+export const mockDayParts: DayPart[] = [
+  { id: "dp1", campaignId: "c1", window: "00:00–06:00", roas: "1.4", enabled: false },
+  { id: "dp2", campaignId: "c1", window: "10:00–14:00", roas: "4.8", enabled: true },
+  { id: "dp3", campaignId: "c1", window: "18:00–22:00", roas: "3.2", enabled: true },
+];
+
+export const mockRules: Rule[] = [
+  { id: "r1", scope: "Campaign c1", metric: "ACOS", operator: ">", threshold: "30%", duration: "7d", action: "prepare change — reduce budget 15%", enabled: true, lastTriggered: "2 hr ago" },
+  { id: "r2", scope: "Inventory Acme Hero", metric: "Cover", operator: "<", threshold: "7 days", duration: "1d", action: "create signal — stock risk", enabled: true, lastTriggered: "30 min ago" },
+  { id: "r3", scope: "Keyword k2", metric: "Spend", operator: ">", threshold: "$100", duration: "14d", action: "request approval — pause keyword", enabled: true, lastTriggered: "1 day ago" },
+];
+
+export const mockListingIssues: ListingIssue[] = [
+  { id: "li1", productId: "p1", type: "suppression", detail: "Main image fails compliance — ghost mannequin", source: "SP-API · 1 hr ago" },
+  { id: "li2", productId: "p2", type: "eligibility", detail: "Walmart eligibility — missing GTIN", source: "Walmart API · syncing" },
+];
+
+export const mockProfitRows: ProfitRow[] = [
+  { id: "pr1", product: "Acme Hero Desk Mount", revenue: "$48,200", cogs: "$18,400", fees: "$7,230", adCost: "$6,140", margin: "32% · $16,430", source: "QuickBooks · Amazon Reports 1 hr ago" },
+  { id: "pr2", product: "Acme Filter Pack", revenue: "$12,400", cogs: "$6,800", fees: "$1,860", adCost: "$2,100", margin: "13% · $1,640", source: "Walmart · QuickBooks disconnected — partial" },
+];
+
+export const mockPricing: PricingRow[] = [
+  { id: "prc1", product: "Acme Hero Desk Mount", current: "$29.99", history: "$29.99 → $27.99 (7d)", competitor: "$27.49 (2 sellers below)", anomaly: "−4.8% vs 7d avg", source: "Keepa · SP-API 12m ago" },
+  { id: "prc2", product: "Acme Filter Pack", current: "$18.50", history: "stable", competitor: "$17.99", anomaly: "—", source: "Walmart Price API" },
+];
+
+export const mockPromotions: Promotion[] = [
+  { id: "promo1", name: "Labor Day 15% — 3 SKUs", discount: "15%", status: "scheduled", performance: "Est +18–27% · $42K–$61K", products: "p1, p3" },
+  { id: "promo2", name: "Prime Day Deal", discount: "20%", status: "active", performance: "ROAS 3.8", products: "p1" },
+  { id: "promo3", name: "Back to School", discount: "10%", status: "draft", performance: "Not launched", products: "p2" },
 ];
