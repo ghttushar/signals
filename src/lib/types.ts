@@ -69,3 +69,63 @@ export interface Integration {
   status: ConnectionStatus;
   lastSync: string;
 }
+
+export interface Metric {
+  id: string;
+  label: string;
+  value: string;
+  delta: string;
+  deltaPositive: boolean;
+  source: string;
+  updatedAt: string;
+}
+
+export interface Campaign {
+  id: string;
+  name: string;
+  status: "Live" | "Paused" | "Archived";
+  spend: string;
+  roas: string;
+  acos: string;
+  source: string;
+  updatedAt: string;
+  intent?: string;
+}
+
+export interface Keyword {
+  id: string;
+  text: string;
+  bid: string;
+  acos: string;
+  campaignId: string;
+  status: "Enabled" | "Paused";
+}
+
+export interface SearchTerm {
+  id: string;
+  term: string;
+  campaign: string;
+  spend: string;
+  orders: number;
+  action: "Promote" | "Negative" | "Ignore";
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  sku: string;
+  marketplace: string;
+  revenue: string;
+  margin: string;
+  buyBox: string;
+  source: string;
+}
+
+export interface InventoryItem {
+  id: string;
+  product: string;
+  cover: string;
+  inbound: string;
+  risk: "High" | "Healthy" | "Low";
+  source: string;
+}

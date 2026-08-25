@@ -1,4 +1,4 @@
-import type { Account, Signal, Integration, Watch } from "./types";
+import type { Account, Signal, Integration, Watch, Metric, Campaign, Keyword, SearchTerm, Product, InventoryItem } from "./types";
 
 export const mockAccounts: Account[] = [
   { id: "acme", name: "Acme · Hero SKU", marketplace: "Amazon", health: "at risk", revenue: "$124,230" },
@@ -127,4 +127,44 @@ export const mockIntegrations: Integration[] = [
 export const mockWatches: Watch[] = [
   { id: "w1", scope: "B0CH3HSSLZ", condition: "Inventory < 14 days", cadence: "hourly", severity: "high", owner: "You", status: "active", history: [{ at: "2 hr ago", result: "9 days — no trigger" }] },
   { id: "w2", scope: "Hero Campaign", condition: "ACOS > 30%", cadence: "daily", severity: "medium", owner: "Marko", status: "active", history: [{ at: "1 day ago", result: "22% — no trigger" }] },
+];
+
+export const mockMetrics: Metric[] = [
+  { id: "m1", label: "Revenue", value: "$124,230", delta: "+4.2%", deltaPositive: true, source: "Amazon · Anarix", updatedAt: "12 min ago" },
+  { id: "m2", label: "ROAS", value: "3.8", delta: "-0.2", deltaPositive: false, source: "Amazon Ads", updatedAt: "12 min ago" },
+  { id: "m3", label: "TACOS", value: "12.4%", delta: "+1.1%", deltaPositive: false, source: "Amazon Ads", updatedAt: "12 min ago" },
+  { id: "m4", label: "Inventory Health", value: "78%", delta: "stable", deltaPositive: true, source: "FBA · Bruno", updatedAt: "30 min ago" },
+  { id: "m5", label: "Buy Box", value: "94%", delta: "-53%", deltaPositive: false, source: "Amazon SP-API", updatedAt: "12 min ago" },
+  { id: "m6", label: "Orders", value: "1,240", delta: "+2.1%", deltaPositive: true, source: "Amazon Reports", updatedAt: "1 hr ago" },
+];
+
+export const mockCampaigns: Campaign[] = [
+  { id: "c1", name: "Summer — Exact", status: "Live", spend: "$500/day", roas: "4.2", acos: "18.4%", source: "Amazon Ads", updatedAt: "12 min ago", intent: "HARVEST" },
+  { id: "c2", name: "Hero SKU Defense", status: "Live", spend: "$320/day", roas: "2.1", acos: "28.3%", source: "Amazon Ads", updatedAt: "12 min ago", intent: "DEFENSE" },
+  { id: "c3", name: "Discovery", status: "Paused", spend: "$120/day", roas: "1.4", acos: "42.1%", source: "Amazon Ads", updatedAt: "2 hr ago", intent: "DISCOVERY" },
+  { id: "c4", name: "Labor Day Promo", status: "Live", spend: "$400/day", roas: "3.1", acos: "21.0%", source: "Amazon Ads · Walmart Connect syncing", updatedAt: "30 min ago", intent: "SEASONAL" },
+];
+
+export const mockKeywords: Keyword[] = [
+  { id: "k1", text: "desk organizer", bid: "$1.20", acos: "22.1%", campaignId: "c1", status: "Enabled" },
+  { id: "k2", text: "hepa filter replacement", bid: "$1.45", acos: "58.3%", campaignId: "c1", status: "Enabled" },
+  { id: "k3", text: "acme hero sku", bid: "$2.10", acos: "18.4%", campaignId: "c2", status: "Enabled" },
+];
+
+export const mockSearchTerms: SearchTerm[] = [
+  { id: "s1", term: "hepa filter for acme", campaign: "Summer — Exact", spend: "$84", orders: 0, action: "Negative" },
+  { id: "s2", term: "desk mount", campaign: "Discovery", spend: "$42", orders: 3, action: "Promote" },
+  { id: "s3", term: "office organizer wood", campaign: "Summer — Exact", spend: "$28", orders: 1, action: "Ignore" },
+];
+
+export const mockProducts: Product[] = [
+  { id: "p1", name: "Acme Hero Desk Mount", sku: "ACM-001", marketplace: "Amazon US", revenue: "$48,200", margin: "32%", buyBox: "94% → 41%", source: "SP-API 12 min ago" },
+  { id: "p2", name: "Acme Filter Pack", sku: "ACM-002", marketplace: "Walmart US", revenue: "$12,400", margin: "18% low", buyBox: "88%", source: "Walmart 8 min ago · syncing" },
+  { id: "p3", name: "Acme Organizer Wood", sku: "ACM-003", marketplace: "Amazon US", revenue: "$22,100", margin: "34%", buyBox: "92%", source: "SP-API 1 hr ago" },
+];
+
+export const mockInventory: InventoryItem[] = [
+  { id: "i1", product: "Acme Hero Desk Mount", cover: "6 days", inbound: "500 ETA 8 days", risk: "High", source: "FBA · Bruno" },
+  { id: "i2", product: "Acme Filter Pack", cover: "22 days", inbound: "—", risk: "Healthy", source: "WFS" },
+  { id: "i3", product: "Acme Organizer Wood", cover: "12 days", inbound: "200 ETA 5 days", risk: "Low", source: "FBA" },
 ];
