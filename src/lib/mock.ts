@@ -1,4 +1,4 @@
-import type { Account, Signal, Integration, Watch, Metric, Campaign, Keyword, SearchTerm, Product, InventoryItem } from "./types";
+import type { Account, Signal, Integration, Watch, Metric, Campaign, Keyword, SearchTerm, Product, InventoryItem, Person, Team, Conversation, Meeting, Decision, Commitment, DocumentItem } from "./types";
 
 export const mockAccounts: Account[] = [
   { id: "acme", name: "Acme · Hero SKU", marketplace: "Amazon", health: "at risk", revenue: "$124,230" },
@@ -167,4 +167,48 @@ export const mockInventory: InventoryItem[] = [
   { id: "i1", product: "Acme Hero Desk Mount", cover: "6 days", inbound: "500 ETA 8 days", risk: "High", source: "FBA · Bruno" },
   { id: "i2", product: "Acme Filter Pack", cover: "22 days", inbound: "—", risk: "Healthy", source: "WFS" },
   { id: "i3", product: "Acme Organizer Wood", cover: "12 days", inbound: "200 ETA 5 days", risk: "Low", source: "FBA" },
+];
+
+export const mockPeople: Person[] = [
+  { id: "p1", name: "Aarav Mehta", role: "Account Manager", team: "AM", accountIds: ["acme", "pf"], avatar: "AM", status: "active" },
+  { id: "p2", name: "Sara Khan", role: "Designer", team: "Design", accountIds: ["acme"], avatar: "SK", status: "active" },
+  { id: "p3", name: "Marko", role: "PPC Manager (Aan)", team: "Aan", accountIds: ["acme", "pf"], avatar: "MK", status: "active" },
+  { id: "p4", name: "Bruno", role: "Demand Planner (Aan)", team: "Aan", accountIds: ["acme"], avatar: "BR", status: "active" },
+  { id: "p5", name: "Claudia", role: "COO (Aan)", team: "Aan", accountIds: ["acme", "mess"], avatar: "CL", status: "active" },
+  { id: "p6", name: "Priya Desai", role: "Sales", team: "Sales", accountIds: ["acme"], avatar: "PD", status: "active" },
+  { id: "p7", name: "John Rhinehart", role: "Client — PF Harris", team: "Client", accountIds: ["pf"], avatar: "JR", status: "offline" },
+];
+
+export const mockTeams: Team[] = [
+  { id: "t1", name: "Account Management", memberIds: ["p1", "p6"] },
+  { id: "t2", name: "Aan Agents", memberIds: ["p3", "p4", "p5"] },
+  { id: "t3", name: "Design", memberIds: ["p2"] },
+];
+
+export const mockConversations: Conversation[] = [
+  { id: "c1", channel: "#acme — Slack", participants: ["p1", "p7"], lastMessage: "Can we increase spend next week?", updatedAt: "2 hr ago", source: "Slack · #acme", request: "Increase advertising spend", accountId: "acme" },
+  { id: "c2", channel: "Teams — Acme Ops", participants: ["p1", "p2", "p6"], lastMessage: "Banner draft ready for review", updatedAt: "5 hr ago", source: "Teams", commitment: "Send forecast Friday", accountId: "acme" },
+  { id: "c3", channel: "Email — John Rhinehart", participants: ["p7", "p1"], lastMessage: "QBR deck looks good, confirm coupon?", updatedAt: "1 day ago", source: "Gmail", request: "Confirm coupon 15%", accountId: "pf" },
+];
+
+export const mockMeetings: Meeting[] = [
+  { id: "m1", title: "Staples Review — Acme", accountId: "acme", when: "Tomorrow 10am", participants: ["p1", "p2", "p6"], status: "upcoming", prep: ["Outstanding: Send forecast Friday", "Recent: Buy Box lost 2 SKUs", "Risk: Inventory 6 days + promo in 5 days"], source: "Google Meet · Calendar" },
+  { id: "m2", title: "PF Harris QBR", accountId: "pf", when: "Yesterday 2pm", participants: ["p1", "p7"], status: "past", summary: "Discussed hero SKU Buy Box + promo plan", decisions: ["Increase hero budget $180 (pending approval)", "Lock PF Harris hero ASIN from auto-price"], transcriptWarning: "Transcript retained 30 days", source: "Meet · Transcript 12 min ago" },
+  { id: "m3", title: "Labor Day Planning", accountId: "acme", when: "Fri 3pm", participants: ["p1", "p2", "p6"], status: "needs_prep", prep: ["Labor Day opportunity +18–27% · 3 SKUs healthy · No conflicting promo"], source: "Google Calendar" },
+];
+
+export const mockDecisions: Decision[] = [
+  { id: "d1", title: "Increase hero budget $180", owner: "Aarav Mehta", accountId: "pf", meetingId: "m2", status: "pending", createdAt: "Yesterday", rationale: "High conversion velocity, ROAS 4.2 holding, but inventory dip ahead · 54% confidence" },
+  { id: "d2", title: "Lock PF Harris hero ASIN", owner: "Aarav Mehta", accountId: "pf", status: "approved", createdAt: "Yesterday", rationale: "Protect from auto-price — no-fly zone" },
+];
+
+export const mockCommitments: Commitment[] = [
+  { id: "cm1", owner: "Aarav Mehta", promise: "Send updated forecast Friday", due: "Fri", accountId: "acme", meetingId: "m1", status: "open", source: "Meeting m1 · Slack #acme" },
+  { id: "cm2", owner: "Sales", promise: "Confirm Labor Day coupon 15% by Fri", due: "Fri", accountId: "acme", meetingId: "m3", status: "open", source: "Labor Day plan" },
+];
+
+export const mockDocuments: DocumentItem[] = [
+  { id: "doc1", name: "Acme SOP — Campaign Setup", type: "SOP", accountId: "acme", updatedAt: "2 days ago", source: "Google Drive" },
+  { id: "doc2", name: "PF Harris QBR Deck 2026-05", type: "Report", accountId: "pf", updatedAt: "1 day ago", source: "Drive · Meet" },
+  { id: "doc3", name: "Labor Day Brief", type: "Sheet", accountId: "acme", updatedAt: "3 hr ago", source: "Sheets" },
 ];

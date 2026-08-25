@@ -129,3 +129,76 @@ export interface InventoryItem {
   risk: "High" | "Healthy" | "Low";
   source: string;
 }
+
+export interface Person {
+  id: string;
+  name: string;
+  role: string;
+  team: string;
+  accountIds: string[];
+  avatar: string;
+  status: "active" | "offline";
+}
+
+export interface Team {
+  id: string;
+  name: string;
+  memberIds: string[];
+}
+
+export interface Conversation {
+  id: string;
+  channel: string;
+  participants: string[];
+  lastMessage: string;
+  updatedAt: string;
+  source: string;
+  request?: string;
+  commitment?: string;
+  accountId?: string;
+}
+
+export interface Meeting {
+  id: string;
+  title: string;
+  accountId: string;
+  when: string;
+  participants: string[];
+  status: "upcoming" | "past" | "needs_prep";
+  prep?: string[];
+  summary?: string;
+  decisions?: string[];
+  transcriptWarning?: string;
+  source: string;
+}
+
+export interface Decision {
+  id: string;
+  title: string;
+  owner: string;
+  accountId: string;
+  meetingId?: string;
+  status: "pending" | "approved" | "dismissed";
+  createdAt: string;
+  rationale: string;
+}
+
+export interface Commitment {
+  id: string;
+  owner: string;
+  promise: string;
+  due: string;
+  accountId: string;
+  meetingId?: string;
+  status: "open" | "done" | "overdue";
+  source: string;
+}
+
+export interface DocumentItem {
+  id: string;
+  name: string;
+  type: "SOP" | "Report" | "Contract" | "Sheet";
+  accountId: string;
+  updatedAt: string;
+  source: string;
+}
