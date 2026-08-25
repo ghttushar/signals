@@ -65,18 +65,19 @@ A lower-level implementation convenience must never silently override a higher-l
 - `INFORMATION_OBJECT_MODEL.md` — information/object model. Defines persistent objects, relationships, states, and lifecycles (Business, Observation, Intelligence, Orchestration, Execution, Memory).
 - `INTELLIGENCE_MODEL.md` — intelligence/reasoning model. Defines how the AI observes, anticipates, prioritizes, orchestrates work, and learns (Level 4–5 anticipatory & operational intelligence).
 - `ANARIX_USER_FLOWS_PRODUCT_ARCHITECTURE.md` — customer-survey-derived product blueprint. Defines 5 core jobs, 5 pillars, product architecture, IA (HOME/ACCOUNTS/INSIGHTS/WORK/MEETINGS/REPORTS/CATALOG/CAMPAIGNS/PROMOTIONS), investigation, meeting prep, and phased MVP.
-- `ANARIX_VISUAL_DESIGN.md` — visual design system. Defines Anarix Periwinkle tokens (light/dark), Aan gradient, typography (Satoshi/Noto Sans/Allura), 4px spacing, component dimensions, layout hierarchy, and production checklist.
+- `ANARIX_VISUAL_DESIGN.md` — visual design system. Defines Anarix Periwinkle tokens (light/dark), typography (Satoshi/Noto Sans/Allura), 4px spacing, component dimensions, layout hierarchy, and production checklist.
 - `ANARIX_INTERACTION_DESIGN.md` — interaction design system. Defines calm/intelligent/fast principles, context preservation, smallest useful surface, progressive disclosure, AI/Aan states, panels/modals/tables/forms, and responsive behavior.
+- `UI_FEATURE_SCREEN_ARCHITECTURE.md` — UI/feature/screen architecture (renamed OPERATE/EXPLORE). Defines 3 environments Operate/Explore/Workspace + Intelligence/Connections/Settings, 38 sections of capabilities/tasks.
+- `SCREEN_INVENTORY.md` — 126-screen inventory (Onboarding 01-08, Operate 09-17, Explore 18-63, Workspace 64-80, Intelligence 81-88, Connections 89-99, Settings 100-114, Global 115-126) with A/B/C categories.
+- `AAN_MASCOT_SPEC.md` — Aan mascot spec. Coral `#f46d76` identity, 4 states (diamond/circle/cube/bar), sizes, tracking/hover, static vs full interactive.
 
 ## Planned follow-up knowledge files
 
 1. `ECOMMERCE_UX_BLUEPRINT.md`
-2. `INFORMATION_ARCHITECTURE.md`
-3. `CORE_USER_FLOWS.md`
-4. `AI_INTERACTION_PRINCIPLES.md`
-5. `DESIGN_PRINCIPLES.md`
-6. `MVP_SCOPE.md`
-7. `TECHNICAL_ARCHITECTURE.md`
-8. `OPENCODE_BUILD_RULES.md`
+2. `AI_INTERACTION_PRINCIPLES.md`
+3. `DESIGN_PRINCIPLES.md`
+4. `MVP_SCOPE.md`
+5. `TECHNICAL_ARCHITECTURE.md`
+6. `OPENCODE_BUILD_RULES.md`
 
 Do not jump directly to polished UI before the product and UX foundations are defined.

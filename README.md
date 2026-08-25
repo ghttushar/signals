@@ -29,6 +29,9 @@ All product context lives in `docs/`. Read all files before making any changes.
 | `ANARIX_USER_FLOWS_PRODUCT_ARCHITECTURE.md` | Customer-survey blueprint — 5 jobs, 5 pillars, IA, flows, intelligence pipeline, MVP phases |
 | `ANARIX_VISUAL_DESIGN.md` | Visual design system — Periwinkle tokens, typography, spacing, layout, Aan brand |
 | `ANARIX_INTERACTION_DESIGN.md` | Interaction design system — principles, panels, tables, AI states, motion, responsive |
+| `UI_FEATURE_SCREEN_ARCHITECTURE.md` | UI/feature/screen architecture — Operate/Explore/Workspace + Intelligence, 38 sections |
+| `SCREEN_INVENTORY.md` | 126-screen inventory — Onboarding, Operate, Explore, Workspace, Intelligence, Connections, Settings, Global |
+| `AAN_MASCOT_SPEC.md` | Aan mascot spec — coral identity, 4 states, sizes, interactive vs static |
 | `README.md` | Knowledge pack index and mandatory reading protocol |
 
 ## Status
