@@ -67,9 +67,10 @@ A lower-level implementation convenience must never silently override a higher-l
 - `ANARIX_USER_FLOWS_PRODUCT_ARCHITECTURE.md` — customer-survey-derived product blueprint. Defines 5 core jobs, 5 pillars, product architecture, IA (HOME/ACCOUNTS/INSIGHTS/WORK/MEETINGS/REPORTS/CATALOG/CAMPAIGNS/PROMOTIONS), investigation, meeting prep, and phased MVP.
 - `ANARIX_VISUAL_DESIGN.md` — visual design system. Defines Anarix Periwinkle tokens (light/dark), typography (Satoshi/Noto Sans/Allura), 4px spacing, component dimensions, layout hierarchy, and production checklist.
 - `ANARIX_INTERACTION_DESIGN.md` — interaction design system. Defines calm/intelligent/fast principles, context preservation, smallest useful surface, progressive disclosure, AI/Aan states, panels/modals/tables/forms, and responsive behavior.
-- `UI_FEATURE_SCREEN_ARCHITECTURE.md` — UI/feature/screen architecture (renamed OPERATE/EXPLORE). Defines 3 environments Operate/Explore/Workspace + Intelligence/Connections/Settings, 38 sections of capabilities/tasks.
-- `SCREEN_INVENTORY.md` — 126-screen inventory (Onboarding 01-08, Operate 09-17, Explore 18-63, Workspace 64-80, Intelligence 81-88, Connections 89-99, Settings 100-114, Global 115-126) with A/B/C categories.
+- `UI_FEATURE_SCREEN_ARCHITECTURE.md` — UI/feature/screen architecture (renamed OPERATE/EXPLORE). Defines 3 environments Operate/Explore/Workspace + Intelligence/Connections/Settings, 38 sections, now with Mission Control + graduated autonomy + guardrails + memory.
+- `SCREEN_INVENTORY.md` — 126-screen inventory (Onboarding 01-08, Operate 09-17 with Mission Control board 96/78/54 confidence, Explore 18-63, Workspace 64-80, Intelligence 81-88, Connections 89-99, Settings 100-114 with graduated autonomy + guardrails + memory) with A/B/C categories.
 - `AAN_MASCOT_SPEC.md` — Aan mascot spec. Coral `#f46d76` identity, 4 states (diamond/circle/cube/bar), sizes, tracking/hover, static vs full interactive.
+- `PHASED_BUILD_PLAN.md` — phased build plan P0-P6 with Profasee-inspired features (Mission Control board, confidence, graduated autonomy per-agent, guardrails, memory flywheel, coordination stories) woven across phases.
 
 ## Planned follow-up knowledge files
 

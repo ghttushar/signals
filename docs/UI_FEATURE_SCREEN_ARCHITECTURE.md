@@ -58,7 +58,7 @@ It answers:
 
 > **What needs my attention?**
 
-The system continuously monitors connected EXPLORE and workspace information and surfaces items requiring attention, review, decision, approval, action, follow-up, or awareness.
+The system continuously monitors connected business and workspace information and surfaces items requiring attention, review, decision, approval, action, follow-up, or awareness.
 
 OPERATE is not the complete EXPLORE-data environment. It is where the user processes important work surfaced by the system.
 
@@ -100,7 +100,7 @@ Signals can be prioritized by:
 - affected campaigns
 - deadline
 - user responsibility
-- EXPLORE importance
+- business importance
 - dependency
 - potential opportunity
 
@@ -133,7 +133,7 @@ Users can inspect:
 - affected entities
 - probable causes
 - supporting evidence
-- EXPLORE impact
+- business impact
 - historical context
 - related signals
 - related campaigns
@@ -177,9 +177,9 @@ OPERATE surfaces items requiring human decisions, including:
 - workspace messages
 - high-impact financial actions
 
-### Approvals
+### Approvals — Confidence-Gated + Live Guardrails + Trace
 
-Approvals represent prepared actions requiring authorized human approval.
+Approvals represent prepared actions requiring authorized human approval. Inspired by Profasee Mission Control: every pending card is confidence-gated with live guardrail evaluation.
 
 Approval information includes:
 
@@ -193,6 +193,32 @@ Approval information includes:
 - evidence
 - authority requirement
 - approval status
+- **confidence score** (per-task, e.g., 96% clean kill, 78% reprice, 54% budget hike)
+- **live guardrail checks** (Max bid, Min price, Daily movement %, ACOS target, Approval-above-impact, Emergency brake, No-fly zones, Anomaly pause, Fresh-data check, Double-check) — each shows `Passed / Held / Blocked`
+- **trace** — `What employee saw → Constraints applied → What they decided → Expected outcome → Can it be rolled back?` + `View trace ↗` link
+- **view trace + rollback point** preserved before live write
+
+Low confidence or stale data narrows authority and keeps card in Awaiting Approval with `Weak signal → Action path narrowed → Rollback preserved` explanation. Rejecting teaches account memory, not generic playbook.
+
+### Graduated Autonomy (Per-Agent)
+
+Not binary. 5 levels, per-agent mix:
+
+1. Recommend only — observes/suggests, no action
+2. Ask me first (default) — proposes, waits for approval, every card shows confidence+trace
+3. Limited handling — routine auto-ships inside guardrails, edge escalates
+4. Broader handling — most decisions inside guardrails
+5. Full autonomy — trusted, acts inside boundaries
+
+Mix per agent (e.g., Marko PPC = Handling it, new Catalog Auditor = Ask me first). Wires to Intelligence Model §40 OBSERVE→RECOMMEND→PREPARE→COORDINATE→EXECUTE→AUTOPILOT + board. Bad outcomes → auto-downgrade to Ask me first.
+
+### Agent Memory Flywheel
+
+Workspace-isolated (per brand, not reused across brands), append-only audit timeline, rollback window, export. Every decision saved, result measured, bad price test → account memory (e.g., Bruno flags stock risk → Marko pauses spend coordination story). Audit any day forever.
+
+### Coordination Stories
+
+Concrete cross-agent stories on Operate Home morning brief make orchestration visceral (e.g., `Bruno flagged 3 SKUs at 6-day cover + promotion in 5 days → Marko paused 2 campaigns → Oracle held price → Claudia briefed`), per Intelligence Model §14.
 
 ### Waiting items
 
@@ -244,9 +270,9 @@ EXPLORE is the complete **EXPLORE intelligence and operational control environme
 
 It answers:
 
-> **What's happening in my EXPLORE, and what can I do about it?**
+> **What's happening in my business, and what can I do about it?**
 
-Unlike OPERATE, EXPLORE intentionally provides deeper access to EXPLORE information.
+Unlike OPERATE, EXPLORE intentionally provides deeper access to business information.
 
 Users can:
 
@@ -290,11 +316,11 @@ Tasks:
 
 - change time range
 - compare periods
-- change EXPLORE scope
+- change business scope
 - investigate metrics
 - open related entities
 - identify recommendations
-- access deeper EXPLORE sections
+- access deeper business sections
 
 ---
 
@@ -611,7 +637,7 @@ Tasks:
 
 # 13. ANALYTICS
 
-Purpose: deeper EXPLORE analysis.
+Purpose: deeper business analysis.
 
 Capabilities:
 
@@ -675,7 +701,7 @@ EXPLORE AI helps users:
 - prepare actions
 - execute approved actions
 
-User intent should become **visible structured EXPLORE operations**.
+User intent should become **visible structured business operations**.
 
 The experience must not depend on long prompts.
 
@@ -713,7 +739,7 @@ Workspace is the **people, communication, meeting and organizational-context env
 
 It answers:
 
-> **What's happening around the EXPLORE?**
+> **What's happening around the business?**
 
 It brings together information from connected collaboration and productivity systems.
 
@@ -731,7 +757,7 @@ Capabilities:
 - documents
 - activity
 - history
-- related EXPLORE context
+- related business context
 
 ---
 
@@ -771,7 +797,7 @@ Tasks:
 - identify commitments
 - identify requests
 - identify unresolved issues
-- connect conversations to EXPLORE context
+- connect conversations to business context
 
 ---
 
@@ -800,7 +826,7 @@ The system can assemble:
 
 - previous meeting context
 - outstanding commitments
-- recent EXPLORE changes
+- recent business changes
 - current risks
 - relevant signals
 - recent conversations
@@ -823,7 +849,7 @@ The system can identify:
 - deadlines
 - unresolved questions
 - follow-up messages
-- related EXPLORE actions
+- related business actions
 
 Users can review and approve resulting work.
 
@@ -839,7 +865,7 @@ Capabilities:
 - date
 - related meeting
 - related conversation
-- related EXPLORE entity
+- related business entity
 - current status
 - resulting actions
 
@@ -901,7 +927,7 @@ Workspace intelligence can:
 - find commitments
 - prepare meetings
 - find conversations
-- connect conversations to EXPLORE activity
+- connect conversations to business activity
 - draft follow-ups
 - identify unresolved issues
 - identify relevant people
@@ -1081,7 +1107,7 @@ The UI must not expose an action that the underlying integration cannot support.
 
 - organization information
 - account structure
-- EXPLORE configuration
+- business configuration
 - organizational preferences
 
 ## Users & Teams
@@ -1102,7 +1128,7 @@ The UI must not expose an action that the underlying integration cannot support.
 - action permissions
 - approval permissions
 
-## Approval Policies
+## Approval Policies — Graduated Autonomy + Guardrails
 
 Users can configure:
 
@@ -1112,6 +1138,9 @@ Users can configure:
 - advertising thresholds
 - account-specific restrictions
 - role-specific approvals
+- **per-agent autonomy** (5 levels: Recommend → Ask me first → Limited handling → Broader handling → Full autonomy, per-agent mix, bad outcomes auto-downgrade)
+- **guardrails** (Max bid, Min price, Daily movement %, ACOS target, Approval-above-impact, Emergency brake, No-fly zones, Anomaly pause, Fresh-data check, Double-check) — visible on Operate cards as live evaluation
+- **agent memory** (workspace-isolated, append-only audit, rollback window, export, coordination stories)
 
 ## AI Preferences
 
@@ -1152,7 +1181,7 @@ Where applicable:
 
 ---
 
-# 33. UNIVERSAL SEARCH / OPERATE
+# 33. UNIVERSAL SEARCH / COMMAND
 
 A global interaction surface should be available throughout the product.
 
@@ -1167,7 +1196,7 @@ It allows users to:
 - find a conversation
 - find a decision
 - find a document
-- inspect EXPLORE data
+- inspect business data
 - initiate supported actions
 
 It supports:
@@ -1203,7 +1232,7 @@ Example:
 ```text
 Signal
  â†“
-EXPLORE campaign
+business campaign
  â†“
 Workspace conversation
  â†“
@@ -1303,11 +1332,11 @@ The environments have intentionally different jobs:
 
 ### EXPLORE
 
-**Understand and manage the EXPLORE.**
+**Understand and manage the business.**
 
 ### WORKSPACE
 
-**Understand and manage the human/work context around the EXPLORE.**
+**Understand and manage the human/work context around the business.**
 
 ### INTELLIGENCE
 
@@ -1328,4 +1357,5 @@ Visual layout, component selection, interaction styling, density, responsive beh
 **Wireframe â†’ Interaction Design â†’ Visual Design**
 
 phases.
+
 

@@ -75,18 +75,30 @@ This is the **Signals replacement / decision environment**.
 
 It should NOT become an Anarix dashboard.
 
-**09 — Operate Home**
+**09 — Operate Home — Mission Control Board**
 
-Primary operational queue:
+Primary operational surface — live Kanban inspired by Profasee Mission Control. Default mode: **Ask me first** (nothing executes without approval). Real-time movement.
 
-* Needs attention
-* Decisions
-* Approvals
-* Changes
-* Risks
-* Opportunities
-* Waiting
-* Completed/recent
+Columns:
+
+* In Progress (agent working)
+* Awaiting Approval (confidence-gated, human decision)
+* Approved
+* Done (with verification + rollback ready)
+
+Each pending card shows:
+
+* Confidence score (e.g., 96% clean kill → one-tap approve, 78% reprice → read trace, 54% budget hike → ask follow-up)
+* Proposed change (e.g., `Pause 6 zero-conversion campaigns — $28.50/day → $0 — 14 days — 0 sales`)
+* Evidence / reasoning trace
+* Guardrail checks (see expanded guardrails below)
+* Owner (Aan agent / human), account, impacted entities
+* Actions: Approve / Reject / View trace ↗ / Ask follow-up / Delegate / Snooze
+* Live movement — card animates In Progress → Awaiting Approval → Done without refresh
+
+Header: `1 pending • 9 active • Handling it 100% • 3 open • 1 done this week` + per-agent autonomy mode chip (`Ask me first` / `Handling it`) + `Drop task` (in-app + Slack-style) + morning brief strip.
+
+Also includes Needs attention / Risks / Opportunities / Waiting as filtered views of same board. No separate queue page.
 
 **10 — Signal Detail**
 
@@ -124,31 +136,27 @@ For situations requiring a human decision.
 * Consequences
 * Decision controls
 
-**13 — Approval Review**
+**13 — Approval Review — Confidence + Guardrail + Trace**
 
-For actions requiring approval.
+For actions requiring approval. Every card is confidence-gated.
 
-* Exact proposed change
-* Current state
-* New state
-* Scope
-* Impact
-* Reason
-* Permission level
-* Approve / reject / modify
+* Confidence score (per-task, not per-agent: same agent can post 96 and 54 same hour)
+* Exact proposed change with trace: `What employee saw → Constraints applied → What they decided → Expected outcome → Can it be rolled back?`
+* Current state → New state + scope + impact + reason
+* **Live guardrail evaluation** (visible on card): Max bid / Min price / Daily movement % / ACOS target / Approval-above-impact / Emergency brake / No-fly zones / Anomaly pause / Fresh-data check / Double-check verified — each shows `Passed / Held / Blocked` with reason
+* Permission level + `Ask me first` vs `Handling it` mode at time of proposal
+* Actions: Approve / Reject / Ask follow-up / View full trace / Modify / Delegate — rejecting teaches account memory (not generic playbook)
 
-**14 — Action Execution**
+If confidence low or data stale: authority narrows, card stays in Awaiting Approval with `Weak signal detected → Action path narrowed → Rollback preserved` explanation.
 
-Visible execution state:
+**14 — Action Execution — Live Trace + Rollback**
 
-* Preparing
-* Awaiting approval
-* Executing
-* Platform response
-* Verification
-* Completed
-* Failed
-* Escalated
+Visible execution state with full trace:
+
+* Preparing → Awaiting approval → Executing → Platform response (e.g., `Wrote pause to Ads API · 6/6 OK`) → Verifying → Completed / Failed / Escalated
+* For each run: checks, API calls, rollback point (`prior state preserved`) remain visible after move
+* Verification result + audit trail `ID 4f2a` + `Logged to audit trail` + one-click rollback ready
+* If failed: `Blocked by emergency brake` or `Held for human review` with reason, not generic error
 
 **15 — Action Result / Verification**
 
@@ -524,7 +532,25 @@ Map external resources to internal:
 
 **107 — Permissions**
 
-**108 — Approval Policies**
+**108 — Approval Policies — Graduated Autonomy (Per-Agent)**
+
+Per-agent 5-level autonomy (scalable, not binary):
+
+* 1 Recommend only — observes, suggests, no action
+* 2 Ask me first (default) — proposes, waits for approval, every card shows confidence + trace, reject teaches account
+* 3 Limited handling — routine tasks auto-ship inside guardrails, edge cases escalate
+* 4 Broader handling — most decisions inside guardrails
+* 5 Full autonomy — trusted, acts inside boundaries
+
+Mix per agent (e.g., Marko PPC = Handling it, new Catalog Auditor = Ask me first). Controls: per-agent budget caps, stop conditions, cost tracking (`$42/$60`), auto-pause, bad outcomes → auto-downgrade to Ask me first. Wires to Intelligence Model §40 OBSERVE→RECOMMEND→PREPARE→COORDINATE→EXECUTE→AUTOPILOT + board.
+
+**108b — Guardrails (Visible Product)**
+
+Hard ceilings (Max bid, Min price $14.99, Daily movement 2.4%, ACOS 22%), Approval-above-impact ($150), Emergency brake ($500/0 conv), No-fly zones (ASINs/keywords/time windows), Anomaly pause, Double-check before write, Fresh-data check. Shown live on approval card as `Passed / Held / Blocked`, not hidden settings. Also global Safety dashboard.
+
+**108c — Agent Memory Flywheel**
+
+Workspace-isolated (per brand, not reused across brands), append-only audit timeline, rollback window, export. Every decision saved, result measured, bad price test → account memory. Audit any day forever.
 
 **109 — AI Preferences**
 
@@ -534,7 +560,13 @@ Map external resources to internal:
 
 **112 — Security**
 
-**113 — Audit Log**
+**113 — Audit Log — Agent Memory Timeline**
+
+Append-only history: recommendations, approvals, pauses, reversals, outcomes with timestamps, reasons, exact rule that allowed/blocked change, rollback IDs, workspace scope. Filter by agent / account / decision / outcome. Exportable. Powers memory flywheel + coordination stories (e.g., `Bruno flags stock risk → Marko pauses spend`).
+
+**113b — Coordination Stories (Operate Brief)**
+
+Concrete cross-agent story strip on Operate Home morning brief: e.g., `Bruno flagged 3 SKUs at 6-day cover + promotion in 5 days → Marko paused 2 campaigns → Oracle held price → Claudia briefed`. Makes Intelligence Model §14 orchestration visceral.
 
 **114 — Billing / Plan**
 
