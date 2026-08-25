@@ -1,4 +1,4 @@
-import type { Account, Signal, Integration } from "./types";
+import type { Account, Signal, Integration, Watch } from "./types";
 
 export const mockAccounts: Account[] = [
   { id: "acme", name: "Acme · Hero SKU", marketplace: "Amazon", health: "at risk", revenue: "$124,230" },
@@ -17,11 +17,23 @@ export const mockSignals: Signal[] = [
     status: "awaiting_approval",
     source: "Amazon SP-API · 12 min ago",
     updatedAt: "12 min ago",
+    agentId: "marko-ppc",
+    autonomyLevel: "ask_me_first",
     guardrails: [
-      { label: "Min price $14.99", state: "Passed" },
-      { label: "Daily movement 2.4%", state: "Passed" },
-      { label: "Approval > $150", state: "Held" },
+      { key: "min_price", label: "Min price $14.99", threshold: "$14.99", state: "Passed", reason: "New price $23.40 > floor", checkedAt: "12 min ago" },
+      { key: "daily_move", label: "Daily movement 2.4%", threshold: "2.4%", state: "Passed", reason: "+1.8% inside ceiling", checkedAt: "12 min ago" },
+      { key: "approval_impact", label: "Approval > $150", threshold: "$150", state: "Held", reason: "Impact below threshold, needs review", checkedAt: "12 min ago" },
+      { key: "emergency", label: "Emergency $500/0 conv", threshold: "$500", state: "Passed", reason: "Not triggered", checkedAt: "12 min ago" },
     ],
+    trace: {
+      saw: "Keyword 'hepa filter replacement' generated 0 sales on $84 spend over 14 days",
+      constraints: ["Minimum 3% conversion rate threshold", "Budget cap $500/day for this campaign"],
+      decided: "Pause 6 zero-conversion campaigns — $28.50/day → $0 · 14 days idle",
+      expected: "Save $84/14 days · Redistribute to proven keywords · 96% confidence",
+      rollbackId: "4f2a",
+      priorState: "$28.50/day across 6 campaigns",
+    },
+    runs: [{ id: "run-1", startedAt: "2:14am", api: "Wrote pause to Ads API · 6/6 OK", result: "Logged to audit trail · ID 4f2a", status: "success" }],
   },
   {
     id: "sig-2",
@@ -33,10 +45,21 @@ export const mockSignals: Signal[] = [
     status: "new",
     source: "Anarix · Shopify + inventory healthy",
     updatedAt: "1 hr ago",
+    agentId: "claudia-coo",
+    autonomyLevel: "recommend",
     guardrails: [
-      { label: "Inventory 12 days", state: "Passed" },
-      { label: "Margin supports 15%", state: "Passed" },
+      { key: "inventory", label: "Inventory 12 days", threshold: "7 days", state: "Passed", reason: "Healthy for promo", checkedAt: "1 hr ago" },
+      { key: "margin", label: "Margin supports 15%", threshold: "15%", state: "Passed", reason: "Gross margin 34% → can discount", checkedAt: "1 hr ago" },
+      { key: "fresh_data", label: "Fresh-data check", threshold: "30 min", state: "Passed", reason: "Shopify synced 8 min ago", checkedAt: "1 hr ago" },
     ],
+    trace: {
+      saw: "Labor Day approaching · 3 products historically +31% during promo period",
+      constraints: ["12 days preparation window", "Shopify store active", "No conflicting promotion"],
+      decided: "Create 15% coupon + homepage banner + assign Design + ask Sales confirm",
+      expected: "+18–27% revenue · 78% confidence · Inventory supports discount",
+      rollbackId: "lab3",
+      priorState: "No Labor Day promotion active",
+    },
   },
   {
     id: "sig-3",
@@ -45,14 +68,50 @@ export const mockSignals: Signal[] = [
     impact: "$180/day — ROAS 4.2",
     confidence: 54,
     severity: "medium",
-    status: "new",
+    status: "in_progress",
     source: "Amazon Ads · 2 hr ago",
     updatedAt: "2 hr ago",
+    agentId: "oracle-pricing",
+    autonomyLevel: "limited",
     guardrails: [
-      { label: "ACOS target 22%", state: "Passed" },
-      { label: "Budget ceiling $500", state: "Passed" },
-      { label: "Auto-pilot $150", state: "Held" },
+      { key: "acos", label: "ACOS target 22%", threshold: "22%", state: "Passed", reason: "Campaign below target", checkedAt: "2 hr ago" },
+      { key: "budget_ceiling", label: "Budget ceiling $500", threshold: "$500", state: "Passed", reason: "Stays inside daily cap after +$180", checkedAt: "2 hr ago" },
+      { key: "autopilot", label: "Auto-pilot $150", threshold: "$150", state: "Held", reason: "+$180 above autopilot limit → Held for review", checkedAt: "2 hr ago" },
+      { key: "no_fly", label: "No-fly window", threshold: "none", state: "Passed", reason: "Not locked", checkedAt: "2 hr ago" },
     ],
+    trace: {
+      saw: "High conversion velocity on Hero SKU · 2-day inventory dip ahead",
+      constraints: ["Daily budget cap $500", "Autopilot threshold $150", "No-fly zones: 12 locked ASINs"],
+      decided: "Increase Hero Campaign budget +$180 — high velocity opened room",
+      expected: "ROAS holding 4.2, but inventory dip → monitor, 54% confidence",
+      rollbackId: "b180",
+      priorState: "$320/day → $500/day proposed",
+    },
+  },
+  {
+    id: "sig-4",
+    accountId: "acme",
+    title: "Stock risk — 3 SKUs at 6-day cover",
+    impact: "Promo in 5 days — 2.1× demand",
+    confidence: 88,
+    severity: "critical",
+    status: "in_progress",
+    source: "Bruno · Inventory · 30 min ago",
+    updatedAt: "30 min ago",
+    agentId: "bruno-inventory",
+    autonomyLevel: "broader",
+    guardrails: [
+      { key: "cover", label: "Cover 7 days", threshold: "7 days", state: "Blocked", reason: "6 days < threshold", checkedAt: "30 min ago" },
+      { key: "promo_exposure", label: "Promo exposure", threshold: "5 days", state: "Held", reason: "Promo starts before replenishment", checkedAt: "30 min ago" },
+    ],
+    trace: {
+      saw: "3 SKUs at 6-day cover, promo scheduled in 5 days, historical promo demand 2.1× baseline",
+      constraints: ["Inbound 500 units ETA 8 days", "Warehouse transfer possible"],
+      decided: "Recommend transfer 500 units or reduce promo exposure — coordination needed",
+      expected: "Avoid stockout during Labor Day promo window",
+      rollbackId: "inv9",
+      priorState: "6 days cover",
+    },
   },
 ];
 
@@ -63,4 +122,9 @@ export const mockIntegrations: Integration[] = [
   { name: "Slack", status: "connected", lastSync: "2 min ago" },
   { name: "Google Meet", status: "connected", lastSync: "1 hr ago" },
   { name: "QuickBooks", status: "disconnected", lastSync: "—" },
+];
+
+export const mockWatches: Watch[] = [
+  { id: "w1", scope: "B0CH3HSSLZ", condition: "Inventory < 14 days", cadence: "hourly", severity: "high", owner: "You", status: "active", history: [{ at: "2 hr ago", result: "9 days — no trigger" }] },
+  { id: "w2", scope: "Hero Campaign", condition: "ACOS > 30%", cadence: "daily", severity: "medium", owner: "Marko", status: "active", history: [{ at: "1 day ago", result: "22% — no trigger" }] },
 ];
