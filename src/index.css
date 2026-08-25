@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 232 36% 97%;
+    --foreground: 235 33% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 235 33% 9%;
+    --primary: 232 64% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 236 28% 24%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 228 23% 94%;
+    --muted-foreground: 228 14% 38%;
+    --accent: 235 73% 82%;
+    --accent-foreground: 235 33% 9%;
+    --border: 228 20% 88%;
+    --input: 228 20% 88%;
+    --ring: 232 64% 57%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 233 36% 9%;
+    --foreground: 232 36% 92%;
+    --card: 233 26% 14%;
+    --card-foreground: 232 36% 92%;
+    --primary: 232 85% 70%;
+    --primary-foreground: 233 36% 9%;
+    --secondary: 236 41% 31%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 233 20% 18%;
+    --muted-foreground: 228 20% 68%;
+    --accent: 235 100% 87%;
+    --accent-foreground: 233 36% 9%;
+    --border: 233 18% 22%;
+    --input: 233 18% 22%;
+    --ring: 232 85% 70%;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-family: "Noto Sans", system-ui, sans-serif;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: "Satoshi", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: "Satoshi", system-ui, sans-serif;
+  }
+  .font-body {
+    font-family: "Noto Sans", system-ui, sans-serif;
+  }
+  .font-aan {
+    font-family: "Allura", cursive;
+  }
+}
